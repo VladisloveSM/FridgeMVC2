@@ -1,0 +1,57 @@
+﻿@model LoginData
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form method="post">
+        <section class="vh-100" style="background-color: #508bfc;">
+            <div class="container py-5 h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                        <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                            <div class="card-body p-5 text-center">
+                            <h3 class="mb-5">Sign in</h3>
+
+                             <p class="text-danger">@ViewBag.ErrorMessage</p>
+                            <div class="form-outline mb-4">
+                            <input id="typeEmailX-2" name="Name" class="form-control form-control-lg" />
+                            <label class="form-label" for="typeEmailX-2">Name</label>
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-outline mb-4">
+                              <input type="password" id="typePasswordX-2" name="Password" class="form-control form-control-lg" />
+                              <label class="form-label" for="typePasswordX-2">Password</label>
+                              @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-check d-flex justify-content-start mb-4">
+                                <label class="form-check-label" for="form1Example3">I don't have an account, click <a asp-controller="Login" asp-action="LoginForm">here</a>.</label>
+                            </div>
+
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
+
+                            <hr class="my-4">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

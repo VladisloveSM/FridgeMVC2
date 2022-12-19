@@ -1,8 +1,29 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+﻿    <!-- About section-->
+    <section id="about" bis_size="{&quot;x&quot;:0,&quot;y&quot;:398,&quot;w&quot;:1519,&quot;h&quot;:522,&quot;abs_x&quot;:0,&quot;abs_y&quot;:461}">
+        <div class="container px-4" bis_size="{&quot;x&quot;:99,&quot;y&quot;:542,&quot;w&quot;:1320,&quot;h&quot;:234,&quot;abs_x&quot;:99,&quot;abs_y&quot;:605}">
+            <div class="row gx-4 justify-content-center" bis_size="{&quot;x&quot;:111,&quot;y&quot;:542,&quot;w&quot;:1296,&quot;h&quot;:234,&quot;abs_x&quot;:111,&quot;abs_y&quot;:605}">
+                <div class="col-lg-8" bis_size="{&quot;x&quot;:327,&quot;y&quot;:542,&quot;w&quot;:863,&quot;h&quot;:234,&quot;abs_x&quot;:327,&quot;abs_y&quot;:605}">
+                    <h2 bis_size="{&quot;x&quot;:339,&quot;y&quot;:542,&quot;w&quot;:839,&quot;h&quot;:38,&quot;abs_x&quot;:339,&quot;abs_y&quot;:605}">About this page</h2>
+                    <p class="lead" bis_size="{&quot;x&quot;:339,&quot;y&quot;:588,&quot;w&quot;:839,&quot;h&quot;:60,&quot;abs_x&quot;:339,&quot;abs_y&quot;:651}">This is a test task, that must create fridges and provide work with them. This project work with Data Base, that create in Microsoft SQL Server. This template was create by ASP .NET CORE 5.0. You are on main page use header to go to another pages.</p>
+                    <ul bis_size="{&quot;x&quot;:339,&quot;y&quot;:664,&quot;w&quot;:839,&quot;h&quot;:96,&quot;abs_x&quot;:339,&quot;abs_y&quot;:727}">
+                        <li bis_size="{&quot;x&quot;:371,&quot;y&quot;:664,&quot;w&quot;:807,&quot;h&quot;:24,&quot;abs_x&quot;:371,&quot;abs_y&quot;:727}">Click nav links to leave this page</li>
+                        <li bis_size="{&quot;x&quot;:371,&quot;y&quot;:688,&quot;w&quot;:807,&quot;h&quot;:24,&quot;abs_x&quot;:371,&quot;abs_y&quot;:751}">You can create fridges</li>
+                        <li bis_size="{&quot;x&quot;:371,&quot;y&quot;:712,&quot;w&quot;:807,&quot;h&quot;:24,&quot;abs_x&quot;:371,&quot;abs_y&quot;:775}">Create products and put them into your fridge.</li>
+                        <li bis_size="{&quot;x&quot;:371,&quot;y&quot;:736,&quot;w&quot;:807,&quot;h&quot;:24,&quot;abs_x&quot;:371,&quot;abs_y&quot;:799}">If you want to add prdoucts, that are not in the fridge use button "TryAdd".</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services section-->
+    <section class="bg-light" id="services" bis_size="{&quot;x&quot;:0,&quot;y&quot;:920,&quot;w&quot;:1519,&quot;h&quot;:440,&quot;abs_x&quot;:0,&quot;abs_y&quot;:983}">
+        <div class="container px-4" bis_size="{&quot;x&quot;:99,&quot;y&quot;:1064,&quot;w&quot;:1320,&quot;h&quot;:152,&quot;abs_x&quot;:99,&quot;abs_y&quot;:1127}">
+            <div class="row gx-4 justify-content-center" bis_size="{&quot;x&quot;:111,&quot;y&quot;:1064,&quot;w&quot;:1296,&quot;h&quot;:152,&quot;abs_x&quot;:111,&quot;abs_y&quot;:1127}">
+                <div class="col-lg-8" bis_size="{&quot;x&quot;:327,&quot;y&quot;:1064,&quot;w&quot;:863,&quot;h&quot;:152,&quot;abs_x&quot;:327,&quot;abs_y&quot;:1127}">
+                    <h2 bis_size="{&quot;x&quot;:339,&quot;y&quot;:1064,&quot;w&quot;:839,&quot;h&quot;:38,&quot;abs_x&quot;:339,&quot;abs_y&quot;:1127}">Try to add product</h2>
+                    <p class="lead" bis_size="{&quot;x&quot;:339,&quot;y&quot;:1110,&quot;w&quot;:839,&quot;h&quot;:90,&quot;abs_x&quot;:339,&quot;abs_y&quot;:1173}">Press this button, and system will find first fridge, that doesn't contained all products.</p>
+                    <p class="lead" bis_size="{&quot;x&quot;:339,&quot;y&quot;:1110,&quot;w&quot;:839,&quot;h&quot;:90,&quot;abs_x&quot;:339,&quot;abs_y&quot;:1173}"><a asp-controller="Home" asp-action="GetFridgeWithEmptyProducts" type="button" class="btn btn-dark">TryAdd</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
