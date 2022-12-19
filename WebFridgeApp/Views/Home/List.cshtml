@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Fridge>
+
+<table class="table">
+<thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Owner</th>
+        <th scope="col">Model</th>
+        <th scope="col"></th>
+    </tr>
+</thead>
+<tbody>
+          @{
+                using AuthClient client = new AuthClient(@ViewBag.Context);
+                var result = await client.GetAsync($"{ViewBag.WebApiName}/Fridge/Models");
+                IEnumerable<FridgeModel> models = JsonSerializer.Deserialize<IEnumerable<FridgeModel>>(result.Content.ReadAsStringAsync().Result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });        
+                foreach (Fridge fridge in Model)
+                {
+                    <tr>
+                    <td>@fridge.Name</td>
+                    <td>@fridge.OwnerName</td>
+                    <td>@models.ToList().Find(f => f.Id == fridge.ModelId).Name</td>
+                    <td>
+                    <a class="btn btn-outline-primary mt-1" role="button" asp-controller="Home" asp-action="Fridge" asp-route-id="@fridge.Id">Add</a>
+                    <a class="btn btn-outline-warning mt-1" role="button" asp-controller="Home" asp-action="UpdateFridgeForm" asp-route-id="@fridge.Id">Edit</a>
+                    <a class="btn btn-outline-danger mt-1" href="#" role="button" data-toggle="modal" data-target="#idModal" data-fridge="@fridge.Id.ToString()">Remove</a>
+                    </td>
+                    </tr>
+                }
+            }
+</tbody>
+</table>
+<div class="mt-1">
+    <center><a class="btn btn-outline-success mb-3" asp-controller="Home" asp-action="FridgeForm">New</a></center>
+</div>
+
+<div class="modal fade" id="idModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete fridge</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete this fridge with all products?
+      </div>
+      <div class="modal-footer">
+       <button id="idModalSubmitBtn" type="button" class="btn btn-primary">Delete</button>
+       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> 
+
+
+@section Scripts
+{
+<script>
+    $('#idModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget) // Button that triggered the modal
+      var fridge = button.data('fridge') // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this)
+      //modal.find('#idModalSubmitBtn').attr('asp-route-id', fridge)
+      modal.find('#idModalSubmitBtn').on('click', () => {
+            window.location.href = `/Home/Delete/${fridge}`;
+        })
+    })
+</script>
+}

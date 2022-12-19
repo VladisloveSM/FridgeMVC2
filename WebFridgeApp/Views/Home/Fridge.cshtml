@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FridgeProduct>
+
+<h1>@ViewBag.Title</h1>
+<h4>@ViewBag.EmptyProducts</h4>
+@{
+        using AuthClient client = new AuthClient(@ViewBag.Context);
+        var result = await client.GetAsync($"{ViewBag.WebApiName}/Product/All");
+        List<Product> products = JsonSerializer.Deserialize<List<Product>>(result.Content.ReadAsStringAsync().Result, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        for(int i = 0; i < Model.Count(); i++)
+        {
+            <div class="row mt-5">
+            @{
+                for (;i < Model.Count(); i++) 
+                {
+                    
+                    <div class="col card">
+                        <p>@products.Find(e => e.Id == Model.ElementAt(i).ProductId).Name</p>
+                        <p>Quantity: @Model.ElementAt(i).Quantity</p>
+                        <div class="card-text">
+                        <a asp-controller="Home" asp-action="UpdateProductForm" asp-route-id="@Model.ElementAt(i).Id" asp-route-fridge_id="@Model.ElementAt(i).FridgeId" class="btn btn-link" role="button">Edit</a>
+                        <a asp-controller="Home" asp-action="RemoveProduct" asp-route-id="@Model.ElementAt(i).Id" asp-route-fridge_id="@Model.ElementAt(i).FridgeId" class="btn btn-link" role="button">Remove</a>
+                        </div>
+                    </div>
+                    if ((i + 1) % 3 == 0 || i == Model.Count() - 1)
+                    {
+                        break;
+                    }
+                }
+                if ((i + 1) % 3 != 0)
+                {
+                    for (; (i + 1) % 3 != 0; i++)
+                    {
+                        <div class="col">
+                        </div>
+                    }
+                }
+            }
+            </div>
+        }
+
+        if (Model.Count() == 0)
+        {
+            <div class="row mt-4 mb-4">
+                <h2>This fridge is empty :(</h2>
+            </div>
+        }
+            
+        <div class="row align-content-center mt-5 mb-4">
+            <a type="button" class="btn btn-success btn-lg" asp-controller="Home" asp-action="ProductForm" asp-route-id="@(ViewBag.FridgeId)">Add food</a>
+        </div>
+ }
